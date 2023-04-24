@@ -28,13 +28,13 @@ public class TableColorCellRenderer implements TableCellRenderer {
             long diasRestantes = dataAtual.until(dataPrazo).getDays();
 
             if (diasRestantes > 7) {
-                c.setBackground(COLOR_LIST.get(0)); // verde claro
+                c.setBackground(COLOR_LIST.get(0)); // verde claro mais de 7 dias
             } else if (diasRestantes > 3) {
-                c.setBackground(COLOR_LIST.get(1)); // amarelo
+                c.setBackground(COLOR_LIST.get(1)); // amarelo 7 a 3 dias antes
             } else if (diasRestantes > 1) {
-                c.setBackground(COLOR_LIST.get(2)); // laranja
+                c.setBackground(COLOR_LIST.get(2)); // laranja de 3 a 1 dia antes
             } else {
-                c.setBackground(COLOR_LIST.get(3)); // vermelho
+                c.setBackground(COLOR_LIST.get(3)); // vermelho menos de um dia ou vencido
             }
         } else {
             c.setBackground(Color.WHITE); // cor padrão das células que não representam o prazo
