@@ -1,6 +1,7 @@
 package br.upe.model;
 
 import javax.swing.table.AbstractTableModel;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.Vector;
 public class TarefaTableModel extends AbstractTableModel {
     private List<Tarefa> tarefasFinalizadas;
     private List<Tarefa> tarefasAtivas;
-
     private boolean exibirFinalizadas;
 
     public TarefaTableModel() {
@@ -23,8 +23,23 @@ public class TarefaTableModel extends AbstractTableModel {
     }
 
     @Override
+    public String getColumnName(int col) {
+        switch (col) {
+            case 0:
+                return "";
+            case 1:
+                return "Descricao";
+            case 2:
+                return "Data Criada";
+            case 3:
+                return "Prazo Final";
+        }
+        return null;
+    }
+
+    @Override
     public int getColumnCount() {
-        return 2;
+        return 4;
     }
 
     @Override
@@ -33,6 +48,8 @@ public class TarefaTableModel extends AbstractTableModel {
         switch (columnIndex) {
             case 0 : return tarefa.isFinalizada();
             case 1 : return tarefa.getDescricao();
+            case 2 : return tarefa.getDataCriacao();
+            case 3 : return tarefa.getDataVencimento();
         }
         return null;
     }
@@ -41,6 +58,9 @@ public class TarefaTableModel extends AbstractTableModel {
         switch (c) {
             case 0 : return Boolean.class;
             case 1 : return String.class;
+            case 2 :
+            case 3 :
+                return LocalDate.class;
         }
         return null;
     }

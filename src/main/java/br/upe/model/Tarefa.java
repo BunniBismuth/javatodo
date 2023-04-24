@@ -1,6 +1,7 @@
 package br.upe.model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Tarefa {
 
@@ -10,10 +11,11 @@ public class Tarefa {
     private LocalDate dataVencimento;
     private Boolean finalizada;
     private int ordem;
-
-    public Tarefa(String texto, int ordem) {
+    public Tarefa(String texto, String dataVencimento, int ordem) {
         this.dataCriacao = LocalDate.now();
         this.descricao = texto;
+        DateTimeFormatter formatoData = DateTimeFormatter.ofPattern("d/MM/yyyy");
+        this.dataVencimento = LocalDate.parse(dataVencimento, formatoData);
         this.ordem = ordem;
     }
 

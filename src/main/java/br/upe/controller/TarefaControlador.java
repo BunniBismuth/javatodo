@@ -26,7 +26,6 @@ public class TarefaControlador {
         tarefaTableModel.setExibirFinalizadas(exibir);
     }
 
-
     //Getter e Setters
 
     public TarefaTableModel getTarefaTableModel() {
